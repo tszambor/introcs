@@ -7,16 +7,18 @@ public class GCD
         int x = Integer.parseInt(args[0]);
         int y = Integer.parseInt(args[1]);
         
-        int gcd = 0;
+        while (x % y != 0)
+        {
+           if (x < y)
+           {
+               int tmp = x;
+               x = y;
+               y = tmp;
+           }
+           
+           x = x % y;
+        }
         
-        if (x > y)
-        {
-            if (x % y == 0)
-                gcd = y;
-        }
-        else
-        {
-            // gcd = gcd(x % y and y)
-        }
-    }
+        System.out.println(y);
+     }
 }
