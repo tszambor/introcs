@@ -1,4 +1,5 @@
 // Exercise 1.2.15
+// Updated September 2014 - The test was defined wrongly (book error).
 
 public class TriangleTest
 {
@@ -10,7 +11,7 @@ public class TriangleTest
             int b = Integer.parseInt(args[1]);
             int c = Integer.parseInt(args[2]);
             
-            System.out.println("The values could be a triangle: " + (a > b + c || b > a + c || c > a + b));
+            System.out.println("The values could be a triangle: " + (a < b + c && b < a + c && c < a + b));
         }
         else
         {

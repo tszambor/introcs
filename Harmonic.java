@@ -1,3 +1,6 @@
+// Program 1.3.5
+// Harmonic numbers
+
 public class Harmonic
 {
     public static void main(String[] args)

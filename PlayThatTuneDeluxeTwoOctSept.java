@@ -1,7 +1,8 @@
 // Program 2.1.4
 // Exercise 2.1.24
+// September 2014 version
 
-public class PlayThatTuneDeluxeTwoOct
+public class PlayThatTuneDeluxeTwoOctSept
 {
     public static double[] sum(double[] a, double[] b, double awt, double bwt)
     {
@@ -27,14 +28,18 @@ public class PlayThatTuneDeluxeTwoOct
         // Play note of given pitch, with harmonics.
         double hz = 440.0 * Math.pow(2, pitch / 12.0);
         double[] a = tone(hz, t);
-        double[] hi = tone(2*hz, t);
-        double[] hi2 = tone(3*hz, t);
-        double[] lo = tone(hz/2, t);
-        double[] lo2 = tone(hz/3, t);
-        double[] h = sum(hi, lo, .5, .5);
-        double[] h2 = sum(hi2, lo2, .5, .5);
-        double[] presum = sum(a, h, .5, .5);
-        return sum(presum, h2, .75, .25);
+        double[] hi1 = tone(2*hz, t);
+        double[] lo1 = tone(hz/2, t);
+        double[] h1 = sum(hi1, lo1, .5, .5);
+        
+        // addition for the two octave sound.
+        double[] hi2 = tone(4*hz, t);
+        double[] lo2 = tone(hz/4, t);
+        double[] h2 = sum(hi2, lo2, .25, .25);
+        
+        double[]h = sum(h1, h2, .5, .5);
+        
+        return sum(a, h, .5, .5);
     }
     
     public static void main(String[] args)

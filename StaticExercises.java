@@ -64,7 +64,7 @@ public class StaticExercises
         // Exercise 2.1.11
         int log2 = 0;
         
-        while (N >= 2)
+        while (N >= 2) // shouldn't it be one actually? This is how I did it after a few months
         {
             N /= 2;
             log2++;
