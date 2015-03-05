@@ -24,7 +24,7 @@ public class BlackScholes
         return 0.5 + phi(z) * sum;
     }
     
-    public static double bScholes(double s, double x, double r, double sigma, double t)
+    public static double blackScholes(double s, double x, double r, double sigma, double t)
     {
         double a = (Math.log(s/x) + t*(r + sigma*sigma/2)) / (sigma * Math.sqrt(t));
         double b = a - sigma*Math.sqrt(t);
@@ -43,6 +43,6 @@ public class BlackScholes
         double sigma = Double.parseDouble(args[3]); // standard deviation of the stock's return (volatility)
         double t = Double.parseDouble(args[4]); // time (in years) to maturity
         
-        StdOut.printf("%.3f\n", bScholes(s, x, r, sigma, t));
+        StdOut.printf("%.3f\n", blackScholes(s, x, r, sigma, t));
     }
 }
