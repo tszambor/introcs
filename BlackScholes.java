@@ -3,27 +3,6 @@
 
 public class BlackScholes
 {
-    public static double phi(double x)
-    {
-        return Math.exp(-x*x/2) / Math.sqrt(2*Math.PI);
-    }
-    
-    public static double Phi(double z)
-    {
-        if (z < -8.0) return 0.0;
-        if (z > 8.0) return 1.0;
-        
-        double sum = 0.0, term = z;
-        
-        for (int i = 3; sum != sum + term; i+= 2)
-        {
-            sum = sum + term;
-            term = term * z * z / i;
-        }
-        
-        return 0.5 + phi(z) * sum;
-    }
-    
     public static double blackScholes(double s, double x, double r, double sigma, double t)
     {
         double a = (Math.log(s/x) + t*(r + sigma*sigma/2)) / (sigma * Math.sqrt(t));
@@ -32,7 +11,7 @@ public class BlackScholes
         StdOut.println(a);
         StdOut.println(b);
         
-        return s*Phi(a) - x*Math.exp(-r*t)*Phi(b);
+        return s*Gaussian.Phi(a) - x*Math.exp(-r*t)*Gaussian.Phi(b);
     }
     
     public static void main(String[] args)
