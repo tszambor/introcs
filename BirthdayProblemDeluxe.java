@@ -43,6 +43,6 @@ public class BirthdayProblemDeluxe
         
         int M = Integer.parseInt(args[1]); // number of experiments to be performed
         
-        StdOut.println(birthdayProblem(M, N));
+        System.out.println(birthdayProblem(M, N));
     }
 }
