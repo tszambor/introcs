@@ -1,39 +1,43 @@
 public class UlamSpiralSieveLife
 {
-public static void drawUniverse(int[][] universe, int generation)
-{
-StdDraw.clear();
-for (int y = 1; y < universe.length - 1; y++)
-for (int x = 1; x < universe[y].length - 1; x++)
-if (universe[y][x] == 1)
-StdDraw.point(x, y);
-StdDraw.text(0, 0, Integer.toString(generation));
-StdDraw.show(5);
-}
-public static void main(String[] args)
-{
-// Draw a spiral on the screen
-final int SCALE = 800; // default: 200
-final double PEN = 0.002; // default: 0.005
-final int N = SCALE*SCALE; // used as a counter
-// data structure for prime sieve
-boolean[] isPrime = new boolean[N+1];
-StdDraw.setCanvasSize(SCALE, SCALE);
-StdDraw.setXscale(0, SCALE);
-StdDraw.setYscale(0, SCALE);
-StdDraw.setPenRadius(PEN);
-StdDraw.setPenColor(StdDraw.BLACK);
-int x = 0, y = 0;
-int step = 1;
-int dirX = 1, dirY = 1;
+    public static void drawUniverse(int[][] universe, int generation)
+    {
+        StdDraw.clear();
+        for (int y = 1; y < universe.length - 1; y++)
+            for (int x = 1; x < universe[y].length - 1; x++) {
+            if (universe[y][x] == 1)
+                StdDraw.point(x, y);
+        }
+        
+        StdDraw.text(0, 0, Integer.toString(generation));
+        StdDraw.show(5);
+    }
+    
+    public static void main(String[] args)
+    {
+        // Draw the spiral on the screen
+        final int SCALE = 800; // default: 200
+        final double PEN = 0.002; // default: 0.005
+        final int N = SCALE*SCALE; // used as a counter
+
+        // data structure for prime sieve
+        boolean[] isPrime = new boolean[N+1];
+        StdDraw.setCanvasSize(SCALE, SCALE);
+        StdDraw.setXscale(0, SCALE);
+        StdDraw.setYscale(0, SCALE);
+        StdDraw.setPenRadius(PEN);
+        StdDraw.setPenColor(StdDraw.BLACK);
+        int x = 0, y = 0;
+        int step = 1;
+        int dirX = 1, dirY = 1;
 // prepare data structure for the game of life
-int[][][] universe = new int[2][SCALE+2][SCALE+2];
-int cUniv = 0;
+        int[][][] universe = new int[2][SCALE+2][SCALE+2];
+        int cUniv = 0;
 // StdDraw.clear();
 // sieve the prime array
-for (int i = 1; i <= N; i++)
-isPrime[i] = true;
-for (int i = 2; i <= N/i; i++)
+        for (int i = 1; i <= N; i++)
+            isPrime[i] = true;
+        for (int i = 2; i <= N/i; i++)
 {
 if (isPrime[i])
 {
