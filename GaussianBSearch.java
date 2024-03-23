@@ -1,4 +1,4 @@
-// Program 2.1.2
+// Exercise 2.1.29
 
 public class GaussianBSearch
 {
@@ -24,30 +24,27 @@ public class GaussianBSearch
         return 0.5 + phi(z) * sum;
     }
     
-    public static double PhiInverse(double y, double mu, double sigma)
+    public static double PhiInverse(double y)
     {
         double epsilon = 1e-15;
         
-        double min = 0.0;
-        double max = 1.0;
+        double min = -8.0;
+        double max = 8.0;
         
-        double x0 = (max - min) / 2.0;
+        double x0 = min + (max - min) / 2.0;
         
-        double val = Phi((x0 - mu) / sigma);
+        double val = Phi(x0);
         
         while (Math.abs(val-y) > epsilon)
         {
             if (val > y)
                 max = x0;
-            else
+            else if (val < y)
                 min = x0;
             
-            x0 = (max - min) / 2.0;
+            x0 = min + (max - min) / 2.0;
             
-            val = Phi((x0 - mu) / sigma);
-            
-            StdOut.println(x0);
-            StdOut.println(val);
+            val = Phi(x0);
         }
         
         return x0;
@@ -55,11 +52,12 @@ public class GaussianBSearch
     
     public static void main(String[] args)
     {
-        // double z = Double.parseDouble(args[0]);
         double mu = Double.parseDouble(args[0]);
         double sigma = Double.parseDouble(args[1]);
         double p = Double.parseDouble(args[2]);
-        // StdOut.printf("%.3f\n", Phi((z - mu) / sigma));
-        StdOut.printf("%.3f\n", PhiInverse(p, mu, sigma));
+        p /= 100.0;
+        double res = PhiInverse(p) * sigma + mu;
+        StdOut.printf("NeededValue: %.3f\n", res);
+        StdOut.printf("Phi        : %.3f\n", Phi((res - mu) / sigma));
     }
 }
